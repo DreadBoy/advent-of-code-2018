@@ -1,9 +1,6 @@
 const fs = require("fs");
+const onlyUnique = require("./helper").onlyUnique;
 const input = fs.readFileSync("day-5.txt").toString();
-
-function onlyUnique(value, index, self) {
-    return self.indexOf(value) === index;
-}
 
 function findPair(polymer) {
     let removed = false;

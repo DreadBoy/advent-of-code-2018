@@ -6,5 +6,9 @@ function contains(self, value) {
     return self.indexOf(value) > -1;
 }
 
+const flatten = list => list.reduce(
+    (a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []
+);
 
-module.exports = {onlyUnique, contains};
+
+module.exports = {onlyUnique, contains, flatten};

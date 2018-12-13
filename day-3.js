@@ -1,19 +1,10 @@
 const fs = require("fs");
-const flatten = require("./helper").flatten;
+const {flatten, eachCell} = require("./helper");
 const input = fs.readFileSync("day-3.txt").toString();
-
-
-function eachCell(fun, width = 1000, height = 1000) {
-    for (let x = 0; x < width; x++) {
-        for (let y = 0; y < height; y++) {
-            fun(x, y);
-        }
-    }
-}
 
 const grid = [];
 
-eachCell((x, y) => {
+eachCell(1000, 1000, (x, y) => {
     if (!grid[x])
         grid[x] = [];
     grid[x][y] = {
@@ -38,7 +29,7 @@ input
         };
     })
     .forEach(claim => {
-        eachCell((i, j) => {
+        eachCell(1000, 1000, (i, j) => {
             grid[claim.x + i][claim.y + j].claimdId = claim.id;
             grid[claim.x + i][claim.y + j].count++;
         }, claim.width, claim.height);

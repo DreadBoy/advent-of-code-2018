@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 function onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
 }
@@ -24,4 +26,6 @@ const eachCell = (width, height, callback) => {
     }
 };
 
-module.exports = {onlyUnique, contains, flatten, eachCell};
+const readInput = (filename) => fs.readFileSync(filename, 'utf-8');
+
+module.exports = {onlyUnique, contains, flatten, eachCell, readInput};
